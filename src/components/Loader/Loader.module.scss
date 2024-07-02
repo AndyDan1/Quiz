@@ -1,0 +1,47 @@
+.loaderContainer {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  background: var(--background);
+  b {
+    position: absolute;
+    color: #fff;
+    font-size: 3rem !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(90deg);
+  }
+  .circleBg {
+    fill: none;
+    stroke: #2d0c4a;
+    stroke-width: 2.8;
+  }
+  .circle {
+    fill: none;
+    stroke: #ff007f;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    transition: stroke-dasharray 0.3s ease;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+  text {
+    fill: #ffffff;
+    transform: rotate(90deg);
+    font-size: 0.5em;
+    text-anchor: middle;
+  }
+  .caption {
+    color: #ffffff;
+    margin-top: 10px;
+    font-size: 2rem !important;
+    text-align: center;
+  }
+}

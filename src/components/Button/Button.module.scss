@@ -1,0 +1,15 @@
+.button {
+  margin-top: 40px;
+  border-radius: 1000px;
+  padding: 16px 24px;
+  max-width: 335px;
+  width: 100%;
+  height: 56px;
+  background: #e4229c;
+  border: none;
+  color: white;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.5;
+  }
+}
