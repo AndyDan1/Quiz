@@ -66,6 +66,7 @@
     border-radius: 10px;
     padding: 15px 20px;
     color: white;
+    font-size: 1.7rem;
     cursor: pointer;
     transition: background-color 0.3s;
     border: 3px solid transparent;
@@ -94,8 +95,9 @@
       &::after {
         content: "✔";
         position: absolute;
-        top: 4px;
-        left: 4px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
     }
   }

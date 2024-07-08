@@ -1,4 +1,5 @@
 .loaderContainer {
+  margin-top: 166px !important;
   width: 200px;
   height: 200px;
   margin: 0 auto;
@@ -38,10 +39,10 @@
     font-size: 0.5em;
     text-anchor: middle;
   }
-  .caption {
-    color: #ffffff;
-    margin-top: 10px;
-    font-size: 2rem !important;
-    text-align: center;
-  }
+}
+.caption {
+  color: #ffffff !important;
+  margin-top: 10px;
+  font-size: 2rem !important;
+  text-align: center;
 }

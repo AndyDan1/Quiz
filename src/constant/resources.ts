@@ -37,6 +37,15 @@ export const resources = {
           "Young Adult",
           "Bad Boy",
         ],
+        optionForOver40: [
+          "Science Fiction",
+          "Fantasy",
+          "Biography",
+          "Self-Help",
+          "Classics",
+          "Thriller",
+          "Non-Fiction",
+        ],
       },
       email: {
         title: "Email",
@@ -73,7 +82,7 @@ export const resources = {
       },
       age: {
         title: "Quel est votre âge ?",
-        option: ["18-29 Années ", "30-39 Années", '"40-49 Années"', "50+"],
+        option: ["18-29 Années ", "30-39 Années", "40-49 Années", "50+"],
       },
       hate: {
         title: "Qu'est-ce que vous détestez le plus dans un livre ?",
@@ -96,6 +105,15 @@ export const resources = {
           "Romance",
           "Jeune adulte",
           "Mauvais garçon",
+        ],
+        optionForOver40: [
+          "Science-fiction",
+          "Fantaisie",
+          "Biographie",
+          "Développement personnel",
+          "Classiques",
+          "Thriller",
+          "Non-fiction",
         ],
       },
       email: {
@@ -157,6 +175,15 @@ export const resources = {
           "Junge Erwachsene",
           "Böser Junge",
         ],
+        optionForOver40: [
+          "Science-Fiction",
+          "Fantasy",
+          "Biografie",
+          "Selbsthilfe",
+          "Klassiker",
+          "Thriller",
+          "Sachbuch",
+        ],
       },
       email: {
         title: "Email",
@@ -215,6 +242,15 @@ export const resources = {
           "Romance",
           "Joven adulto",
           "Chico malo",
+        ],
+        optionForOver40: [
+          "Ciencia ficción",
+          "Fantasía",
+          "Biografía",
+          "Autoayuda",
+          "Clásicos",
+          "Suspense",
+          "No ficción",
         ],
       },
       email: {

@@ -59,6 +59,7 @@ const Email: FC<IEmailProps> = () => {
         const newPercentage = prevPercentage + 2;
         if (newPercentage >= 100) {
           clearInterval(interval);
+          // setIsLoading(true);
           setIsLoading(false);
           return 100;
         }
@@ -77,10 +78,7 @@ const Email: FC<IEmailProps> = () => {
         ) : (
           <>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Title
-                title={t(`email.agree.continue`)}
-                help={t("email.subtitle")}
-              />
+              <Title title={t(`email.title`)} help={t("email.subtitle")} />
               <input
                 placeholder={t("email.placeholder")}
                 style={{
