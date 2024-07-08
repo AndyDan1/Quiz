@@ -27,6 +27,7 @@ function App() {
     };
     if (!getLocalStorage) {
       localStorage.setItem("Quiz", JSON.stringify(storage));
+      navigation("/quiz/1");
     }
   }, []);
 
@@ -36,76 +37,77 @@ function App() {
     }
   }, [location.pathname]);
 
+  const quizData = [
+    {
+      path: "/quiz/1",
+      type: Select.SingleSelect,
+      variant: "column",
+      question: "welcome",
+      options: "welcomeArray",
+      help: "Choose language",
+      nextPath: "/quiz/2",
+    },
+    {
+      path: "/quiz/2",
+      type: Select.SingleSelectImage,
+      variant: "line",
+      question: "gender.title",
+      options: "gender.option",
+      help: "gender.subtitle",
+      nextPath: "/quiz/3",
+    },
+    {
+      path: "/quiz/3",
+      type: Select.SingleSelect,
+      variant: "column",
+      question: "age.title",
+      options: "age.option",
+      nextPath: "/quiz/4",
+    },
+    {
+      path: "/quiz/4",
+      type: Select.MultipleSelect,
+      variant: "column",
+      question: "hate.title",
+      options: "hate.option",
+      nextPath: "/quiz/5",
+    },
+    {
+      path: "/quiz/5",
+      type: Select.Bubble,
+      variant: "bubble",
+      question: "topics.title",
+      options: "topics.option",
+      help: "topics.subtitle",
+      nextPath: "/email",
+    },
+  ];
+
   return (
-    <>
-      <Routes>
-        <Route
-          path="/quiz/1"
-          element={
-            <Question
-              type={Select.SingleSelect}
-              variant="column"
-              question={t(`welcome`)}
-              options={["English", "French", "German", "Spanish"]}
-              help="Choose language"
-              nextPath="/quiz/2"
+    <Routes>
+      {quizData.map(
+        ({ path, type, variant, question, options, help, nextPath }) => {
+          return (
+            <Route
+              key={path}
+              path={path}
+              element={
+                <Question
+                  type={type}
+                  variant={variant}
+                  question={t(question)}
+                  options={t(options, { returnObjects: true })}
+                  help={t(help as string)}
+                  nextPath={nextPath}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/quiz/2"
-          element={
-            <Question
-              type={Select.SingleSelectImage}
-              variant="line"
-              question={t(`gender.title`)}
-              options={t("gender.option", { returnObjects: true })}
-              help={t(`gender.subtitle`)}
-              nextPath="/quiz/3"
-            />
-          }
-        />
-        <Route
-          path="/quiz/3"
-          element={
-            <Question
-              type={Select.SingleSelect}
-              variant="column"
-              question={t(`age.title`)}
-              options={t("age.option", { returnObjects: true })}
-              nextPath="/quiz/4"
-            />
-          }
-        />
-        <Route
-          path="/quiz/4"
-          element={
-            <Question
-              type={Select.MultipleSelect}
-              variant="column"
-              question={t(`hate.title`)}
-              options={t("hate.option", { returnObjects: true })}
-              nextPath="/quiz/5"
-            />
-          }
-        />
-        <Route
-          path="/quiz/5"
-          element={
-            <Question
-              variant="bubble"
-              type={Select.Bubble}
-              question={t(`topics.title`)}
-              options={t("topics.option", { returnObjects: true })}
-              help={t(`topics.subtitle`)}
-              nextPath="/email"
-            />
-          }
-        />
-        <Route path="/email" element={<Email />} />
-        <Route path="/thanks" element={<Thanks />} />
-      </Routes>
-    </>
+          );
+        }
+      )}
+      <Route path="/email" element={<Email />} />
+      <Route path="/thanks" element={<Thanks />} />
+    </Routes>
   );
 }
 

@@ -13,20 +13,10 @@ const Header: FC<IHeaderProps> = () => {
 
   const location = useLocation();
 
+  const notShowButton =
+    location.pathname !== "/quiz/1" && location.pathname !== "/quiz/2";
+
   const goBack = () => {
-    if (location.pathname === "/quiz/2") {
-      localStorage.setItem(
-        "Quiz",
-        JSON.stringify({
-          language: "",
-          gender: "",
-          age: "",
-          hate: [],
-          favorite: [],
-          email: "",
-        })
-      );
-    }
     navigate(-1);
   };
   useEffect(() => {
@@ -52,7 +42,7 @@ const Header: FC<IHeaderProps> = () => {
             className={style.progress__bar}
           ></div>
         </div>
-        {location.pathname !== "/quiz/1" && (
+        {notShowButton && (
           <button onClick={() => goBack()}>
             <svg
               width="24"

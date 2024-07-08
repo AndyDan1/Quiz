@@ -68,6 +68,7 @@
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
+    border: 3px solid transparent;
 
     &:hover {
       background-color: #e4229b;

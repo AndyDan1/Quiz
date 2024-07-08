@@ -6,7 +6,7 @@ import style from "./Thanks.module.scss";
 
 import Container from "../Container/Container";
 import Title from "../Title/Title";
-import GeneratePdf from "../GeneratePdf/GeneratePdf";
+import GenerateCsv from "../GenerateCsv/GenerateCsv";
 import Button from "../Button/Button";
 
 import Checkmark from "../../assets/img/Checkmark.png";
@@ -36,10 +36,10 @@ const Thanks: FC = () => {
         <div className={style.img}>
           <img src={Checkmark} alt="" />
         </div>
-        <GeneratePdf className={style.download}>
+        <GenerateCsv className={style.download}>
           <img src={Download} alt="" />
           <div className={style.description}>{t("thanks.downloadText")}</div>
-        </GeneratePdf>
+        </GenerateCsv>
         <Button onClick={() => retakeQuiz()}>{t("thanks.retake")}</Button>
       </Container>
     </>

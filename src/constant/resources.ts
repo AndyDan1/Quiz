@@ -5,6 +5,7 @@ export const resources = {
   en: {
     translation: {
       welcome: "What is your preferred language?",
+      welcomeArray: ["English", "French", "German", "Spanish"],
       gender: {
         title: "What gender do you identify with?",
         subtitle: "Please share how do you identify yourself",
@@ -40,8 +41,15 @@ export const resources = {
       email: {
         title: "Email",
         subtitle: "Enter your email to get full access",
+        placeholder: "Your email",
         errorNotCorrect: "not correct email",
         errorEmptyField: "Field not correct",
+        agree: {
+          continue: "By continuing I agree with",
+          privacyPolicy: "Privacy policy",
+          and: "and",
+          termsOfUse: "Terms of use",
+        },
       },
       thanks: {
         title: "Thank you",
@@ -91,10 +99,17 @@ export const resources = {
         ],
       },
       email: {
-        title: "email",
+        title: "Email",
         subtitle: "Entrez votre email pour obtenir un accès complet",
+        placeholder: "Votre email",
         errorNotCorrect: "email incorrect",
         errorEmptyField: "Champ incorrect",
+        agree: {
+          continue: "En continuant, j'accepte la",
+          privacyPolicy: "politique de confidentialité",
+          and: "et les",
+          termsOfUse: "conditions d'utilisation",
+        },
       },
       thanks: {
         title: "Merci",
@@ -144,10 +159,17 @@ export const resources = {
         ],
       },
       email: {
-        title: "email",
+        title: "Email",
         subtitle: "Geben Sie Ihre E-Mail ein, um vollen Zugriff zu erhalten",
+        placeholder: "Ihre E-Mail",
         errorNotCorrect: "falsche E-Mail",
         errorEmptyField: "Feld nicht korrekt",
+        agree: {
+          continue: "Mit der Fortsetzung stimme ich der",
+          privacyPolicy: "Datenschutzrichtlinie",
+          and: "und den",
+          termsOfUse: "Nutzungsbedingungen",
+        },
       },
       thanks: {
         title: "Danke",
@@ -196,11 +218,19 @@ export const resources = {
         ],
       },
       email: {
-        title: "email",
+        title: "Email",
         subtitle:
           "Introduce tu correo electrónico para obtener acceso completo",
+        placeholder: "Tu correo electrónico",
+
         errorNotCorrect: "correo electrónico incorrecto",
         errorEmptyField: "Campo no correcto",
+        agree: {
+          continue: "Al continuar, acepto la",
+          privacyPolicy: "política de privacidad",
+          and: "y los",
+          termsOfUse: "términos de uso",
+        },
       },
       thanks: {
         title: "Gracias",

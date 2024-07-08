@@ -1,6 +1,4 @@
 import React, { PropsWithChildren } from "react";
-import { jsPDF } from "jspdf";
-import autoTable from "jspdf-autotable";
 import { useTranslation } from "react-i18next";
 
 import { Select } from "../../constant/typeSelect";
@@ -9,26 +7,27 @@ interface IGeneratePdf {
   className: string;
 }
 
-const GeneratePdf: React.FC<PropsWithChildren<IGeneratePdf>> = ({
+type QuizRow = {
+  order: number;
+  title: string;
+  type: string;
+  answer: string;
+};
+
+const GenerateCsv: React.FC<PropsWithChildren<IGeneratePdf>> = ({
   children,
   className,
 }) => {
   const { t } = useTranslation();
-  const generatePDF = () => {
+  const exportToCSV = () => {
     const storedData = localStorage.getItem("Quiz");
     if (!storedData) {
-      console.error("No data found in localStorage");
+      alert("No data found in localStorage");
       return;
     }
-
     const quizData = JSON.parse(storedData);
 
-    const doc = new jsPDF();
-
-    doc.setFontSize(20);
-    doc.text("Quiz Results", 20, 20);
-
-    const tableData = [
+    const exampleData = [
       {
         order: 1,
         title: `${t(`questionLanguagePdf`)}`,
@@ -64,25 +63,37 @@ const GeneratePdf: React.FC<PropsWithChildren<IGeneratePdf>> = ({
       { order: 6, title: "Email", type: Select.Email, answer: quizData.email },
     ];
 
-    autoTable(doc, {
-      startY: 30,
-      head: [["order", "title", "type", "answer"]],
-      body: tableData.map((row) => [
-        row.order,
-        row.title,
-        row.type,
-        row.answer,
-      ]),
-    });
+    const convertToCSV = (objArray: QuizRow[]) => {
+      const array = [Object.keys(objArray[0])].concat(objArray);
 
-    doc.save("quiz_results.pdf");
+      return array
+        .map((row) => {
+          return Object.values(row)
+            .map((value) => `"${value}"`)
+            .join(",");
+        })
+        .join("\n");
+    };
+
+    const csvData = convertToCSV(exampleData);
+
+    const blob = new Blob([csvData], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+
+    link.setAttribute("href", url);
+    link.setAttribute("download", "export.csv");
+    link.style.visibility = "hidden";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
-    <button className={className} onClick={generatePDF}>
+    <button className={className} onClick={exportToCSV}>
       {children}
     </button>
   );
 };
 
-export default GeneratePdf;
+export default GenerateCsv;

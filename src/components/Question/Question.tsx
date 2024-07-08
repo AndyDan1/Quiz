@@ -67,7 +67,6 @@ const Question: FC<IQuestionProps> = ({
       parsedData.hate = selectedOptions;
       localStorage.setItem("Quiz", JSON.stringify(parsedData));
       setSelectedOptions([]);
-      navigation("/quiz/5");
     }
     if (location.pathname === "/quiz/5") {
       if (!getLocalStorage) return;
@@ -76,7 +75,6 @@ const Question: FC<IQuestionProps> = ({
       parsedData.favorite = selectedOptions;
       localStorage.setItem("Quiz", JSON.stringify(parsedData));
       setSelectedOptions([]);
-      navigation("/email");
     }
     handleAnswerClick();
   };
@@ -136,7 +134,7 @@ const Question: FC<IQuestionProps> = ({
         )}
         {type === Select.Bubble && (
           <Button
-            disabled={selectedOptions.length < 3}
+            disabled={!selectedOptions.length}
             onClick={() => {
               setLocalStorage();
             }}

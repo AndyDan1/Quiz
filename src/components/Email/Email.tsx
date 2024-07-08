@@ -32,9 +32,14 @@ const Email: FC<IEmailProps> = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<IFormInput>({
     resolver: yupResolver(schema),
+    mode: "onChange",
   });
+
+  const emailValue = watch("email", "");
+
   const navigation = useNavigate();
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     const getLocalStorage = localStorage.getItem("Quiz") || null;
@@ -72,8 +77,12 @@ const Email: FC<IEmailProps> = () => {
         ) : (
           <>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Title title={t("email.title")} help={t("email.subtitle")} />
+              <Title
+                title={t(`email.agree.continue`)}
+                help={t("email.subtitle")}
+              />
               <input
+                placeholder={t("email.placeholder")}
                 style={{
                   border: errors.email ? "2px solid red" : "2px solid blue",
                 }}
@@ -87,12 +96,16 @@ const Email: FC<IEmailProps> = () => {
                   {errors.email.message}
                 </p>
               )}
-              <Button>{t("buttonNext")}</Button>
+              <Button disabled={!emailValue || !!errors.email}>
+                {t("buttonNext")}
+              </Button>
             </form>
 
             <p>
-              By continuing I agree with <Link to="#">Privacy policy</Link> and
-              <Link to={"#"}>Terms of use</Link>.
+              {t(`email.agree.continue`)}{" "}
+              <Link to="#">{t(`email.agree.privacyPolicy`)}</Link>{" "}
+              {t(`email.agree.and`)}
+              <Link to={"#"}> {t(`email.agree.termsOfUse`)}</Link>.
             </p>
           </>
         )}
