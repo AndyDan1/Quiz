@@ -10,6 +10,52 @@ import Thanks from "./components/Thanks/Thanks";
 
 import { Select } from "./constant/typeSelect";
 
+const quizData = [
+  {
+    path: "/quiz/1",
+    type: Select.SingleSelect,
+    variant: "column",
+    question: "welcome",
+    options: "welcomeArray",
+    help: "Choose language",
+    nextPath: "/quiz/2",
+  },
+  {
+    path: "/quiz/2",
+    type: Select.SingleSelectImage,
+    variant: "line",
+    question: "gender.title",
+    options: "gender.option",
+    help: "gender.subtitle",
+    nextPath: "/quiz/3",
+  },
+  {
+    path: "/quiz/3",
+    type: Select.SingleSelect,
+    variant: "column",
+    question: "age.title",
+    options: "age.option",
+    nextPath: "/quiz/4",
+  },
+  {
+    path: "/quiz/4",
+    type: Select.MultipleSelect,
+    variant: "column",
+    question: "hate.title",
+    options: "hate.option",
+    nextPath: "/quiz/5",
+  },
+  {
+    path: "/quiz/5",
+    type: Select.Bubble,
+    variant: "bubble",
+    question: "topics.title",
+    options: "topics.option",
+    help: "topics.subtitle",
+    nextPath: "/email",
+  },
+];
+
 function App() {
   const { t } = useTranslation();
   const navigation = useNavigate();
@@ -36,52 +82,6 @@ function App() {
       navigation("/quiz/1");
     }
   }, [location.pathname]);
-
-  const quizData = [
-    {
-      path: "/quiz/1",
-      type: Select.SingleSelect,
-      variant: "column",
-      question: "welcome",
-      options: "welcomeArray",
-      help: "Choose language",
-      nextPath: "/quiz/2",
-    },
-    {
-      path: "/quiz/2",
-      type: Select.SingleSelectImage,
-      variant: "line",
-      question: "gender.title",
-      options: "gender.option",
-      help: "gender.subtitle",
-      nextPath: "/quiz/3",
-    },
-    {
-      path: "/quiz/3",
-      type: Select.SingleSelect,
-      variant: "column",
-      question: "age.title",
-      options: "age.option",
-      nextPath: "/quiz/4",
-    },
-    {
-      path: "/quiz/4",
-      type: Select.MultipleSelect,
-      variant: "column",
-      question: "hate.title",
-      options: "hate.option",
-      nextPath: "/quiz/5",
-    },
-    {
-      path: "/quiz/5",
-      type: Select.Bubble,
-      variant: "bubble",
-      question: "topics.title",
-      options: "topics.option",
-      help: "topics.subtitle",
-      nextPath: "/email",
-    },
-  ];
 
   return (
     <Routes>
